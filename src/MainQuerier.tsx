@@ -1,4 +1,5 @@
 import Code from "./Code";
+import { getLangs } from "./content/config";
 import InputField from "./InputField";
 import getCode from "./utils/readJson";
 
@@ -9,6 +10,19 @@ interface Reload {
 
 function MainQuerier(props : Reload) {
   let q = getCode();
+  let list = getLangs();
+
+  if (list.length === 0) {
+    return (
+      <div className="flex flex-col items-center p-2">
+        <p className="text-lg font-semibold font-jb-mono p-4 pb-10 text-white">Please select at least one language</p>
+      </div>
+    )
+  }
+
+  while (!list.includes(q.lang)) {
+    q = getCode();
+  }
 
   return (
     <div className="flex flex-col items-center p-2">
