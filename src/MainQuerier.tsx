@@ -8,8 +8,14 @@ interface Reload {
     seed: number
 };
 
+interface Question {
+  lang: string,
+  code: string,
+  answer: string
+}
+
 function MainQuerier(props : Reload) {
-  let q = getCode();
+  let q : Question = getCode();
   let list = getLangs();
 
   if (list.length === 0) {
