@@ -97,7 +97,7 @@ System.out.println(reversed);`,
             code: `int[] arr = {5, 2, 8, 1, 9};
 Arrays.sort(arr, Collections.reverseOrder());
 System.out.println(Arrays.toString(arr));`,
-            answer: "[9, 8, 5, 2, 1]"
+            answer: "[1, 2, 5, 8, 9]"
         },
         {
             lang: "java",
@@ -106,7 +106,7 @@ map.put("apple", 1);
 map.put("banana", 2);
 map.put("cherry", 3);
 map.forEach((k, v) -> System.out.print(k + ": " + v + ", "));`,
-            answer: "apple: 1, banana: 2, cherry: 3,"
+            answer: "apple: 1, banana: 2, cherry: 3, "
         },
         {
             lang: "java",
