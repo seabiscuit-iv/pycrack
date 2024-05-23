@@ -3,7 +3,7 @@ import LangButton from "./LangButton";
 import { config } from "./content/config";
 
 interface ResetFunc {
-  reload: () => void
+  reload?: () => void
 }
 
 function Menu (props : ResetFunc) {
@@ -25,7 +25,12 @@ function Menu (props : ResetFunc) {
         <LangButton name="Java" get={() => {return config.java}} toggle={() => {config.java = !config.java}}/>
         <LangButton name="C" get={() => {return config.c}} toggle={() => {config.c = !config.c}}/>
         <LangButton name="JavaScript" get={() => {return config.javascript}} toggle={() => {config.javascript = !config.javascript}}/>
-        <button onClick={() => {setShowLanguagePanel(false); props.reload();}} className="bg-gray-500 hover:bg-gray-400 border-4 py-2 px-4 rounded-lg mt-auto mb-8">
+        <button onClick={() => {
+            setShowLanguagePanel(false); 
+            if (props.reload !== undefined) {
+              props.reload();
+            }
+          }} className="bg-gray-500 hover:bg-gray-400 border-4 py-2 px-4 rounded-lg mt-auto mb-8">
           Submit Preferences
         </button>
       </div>
