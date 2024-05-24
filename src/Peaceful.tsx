@@ -26,7 +26,7 @@ function Peaceful() {
   return (
     <div>
       <Menu reload={(reset)} />
-      <div className="mx-96 flex flex-col items-center p-2">`
+      <div className="mx-96 flex flex-col items-center p-2">
         <p className="text-green-200 font-jb-mono font-extrabold text-3xl pt-12 pb-10">PyCrack</p>
         <Timer ref={ref}  />
         <MainQuerier seed={seed} reload={reload}/>

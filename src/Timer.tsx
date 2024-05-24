@@ -1,7 +1,9 @@
 import { forwardRef, useImperativeHandle } from "react";
 import { useTimer } from "react-timer-hook";
 
-interface Props {};
+interface Props {
+  onExpiry?: () => void;
+};
 
 export type ResetFunc = {
 	resetTimer: () => void;
@@ -9,13 +11,13 @@ export type ResetFunc = {
 
 const Timer = forwardRef<ResetFunc, Props>((props, ref) => {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 120);
+  time.setSeconds(time.getSeconds() + 10);
 
   const {
     seconds,
     minutes,
     restart
-  } = useTimer({ expiryTimestamp: time, onExpire: () => console.log('onExpire called') });
+  } = useTimer({ expiryTimestamp: time, onExpire: (props.onExpiry !== undefined) ? (props.onExpiry) : (() => {}) });
 
   const restartTimer = () => {
     restart(time); 
