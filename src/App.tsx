@@ -33,7 +33,7 @@ function App() {
   } else if (page === View.CLASSIC) {
     return <Classic expiryFunc={(scr: number) => {endGame(scr, "Classic")}}/>;
   } else if (page === View.RPG) {
-    return <RPG />;
+    return <RPG expiryFunc={(scr: number) => {endGame(scr, "RPG")}}/>;
   } else if (page === View.LAVA) {
     return <Lava expiryFunc={(scr: number) => {endGame(scr, "Lava")}} />;
   } else if (page === View.PEACEFUL) {

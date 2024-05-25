@@ -7,6 +7,8 @@ interface QuestionReload {
   answer : string,
   reload : ()=>void
   onCorrect?: ()=>void
+  onIncorrect?: ()=>void
+  clearOnIncorrect?: boolean
 }
 
 const baseColor = "bg-[#1f2123]";
@@ -27,6 +29,10 @@ function InputField(props : QuestionReload) {
       console.log("INCORRECT");
       document.getElementById("mainform")?.classList.remove(baseColor);
       document.getElementById("mainform")?.classList.add(incorrectColor);
+      if(props.clearOnIncorrect) {
+        setAns("");
+      }
+      if (props.onIncorrect !== undefined) props.onIncorrect();
     }
   }
 
