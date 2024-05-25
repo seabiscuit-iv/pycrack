@@ -182,7 +182,7 @@ print(is_palindrome('A man, a plan, a canal: Panama'))`,
             code: `import re
 
 text = "Hello, World! This is a sample text."
-pattern = r'[^a-zA-Z\s]'
+pattern = r'[^a-zA-Z\\s]'
 clean_text = re.sub(pattern, '', text)
 print(clean_text)`,
             answer: "Hello World This is a sample text"

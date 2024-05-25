@@ -3,28 +3,38 @@ import { useTimer } from "react-timer-hook";
 
 interface Props {
   onExpiry?: () => void;
+  initTime?: number;
 };
 
 export type ResetFunc = {
 	resetTimer: () => void;
+  addTime: (sec: number) => void;
 };
 
 const Timer = forwardRef<ResetFunc, Props>((props, ref) => {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 10);
+  time.setSeconds(time.getSeconds() + (props.initTime ? props.initTime : 180));
 
-  const {
+  let {
+    totalSeconds,
     seconds,
     minutes,
     restart
   } = useTimer({ expiryTimestamp: time, onExpire: (props.onExpiry !== undefined) ? (props.onExpiry) : (() => {}) });
 
   const restartTimer = () => {
-    restart(time); 
+    restart(time);
+  }
+
+  const addTime = (sec: number) => {
+    let temp = new Date();
+    temp.setSeconds(temp.getSeconds() + totalSeconds + sec);
+    restart(temp); 
   }
 
   useImperativeHandle(ref, () => { return {
-    resetTimer: restartTimer
+    resetTimer: restartTimer,
+    addTime: addTime
   }; });
 
   return (

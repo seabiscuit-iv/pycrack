@@ -6,6 +6,7 @@ import getCode from "./utils/readJson";
 interface Reload {
     reload: () => void,
     seed: number
+    onCorrect?: () => void
 };
 
 interface Question {
@@ -33,7 +34,7 @@ function MainQuerier(props : Reload) {
   return (
     <div className="flex flex-col items-center p-2">
       <Code lang={q.lang} code={q.code} answer={q.answer} />
-      <InputField lang={q.lang} code={q.code} answer={q.answer} reload={props.reload}/>
+      <InputField lang={q.lang} code={q.code} answer={q.answer} reload={props.reload} onCorrect={props.onCorrect}/>
     </div>
   );
 }

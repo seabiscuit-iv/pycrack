@@ -22,7 +22,7 @@ function Classic(props: OnEnd) {
   }
 
   const reset = () => {
-    reload();
+    setSeed(Math.random());
     ref.current?.resetTimer();
   }
 

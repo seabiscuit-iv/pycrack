@@ -35,7 +35,7 @@ function App() {
   } else if (page === View.RPG) {
     return <RPG />;
   } else if (page === View.LAVA) {
-    return <Lava />;
+    return <Lava expiryFunc={(scr: number) => {endGame(scr, "Lava")}} />;
   } else if (page === View.PEACEFUL) {
     return <Peaceful />;
   } else if (page === View.ENDSCREEN) {
