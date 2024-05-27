@@ -30,7 +30,7 @@ function Menu (props : ResetFunc) {
             if (props.reload !== undefined) {
               props.reload();
             }
-          }} className="bg-[#2b2f42] hover:bg-[#383e57] border-4 py-2 px-4 rounded-lg mt-auto mb-8">
+          }} className="bg-[#2b2f42] hover:bg-[#383e57] border-4 py-2 px-4 rounded-lg mt-auto mb-8 border-[#383e57]">
           Submit Preferences
         </button>
       </div>
